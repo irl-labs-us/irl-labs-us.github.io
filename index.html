@@ -2,10 +2,10 @@
 <html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <title>IRL – Real-World Connections, Done Safely</title>
+    <title>IRL – In Real Life</title>
     <meta
       name="description"
-      content="IRL helps you build meaningful, in-person connections through interest-based circles, curated scenes, and safety-first design."
+      content="IRL helps people create meaningful real-world connections through interest-based circles, curated scenes, and safety-first design."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -22,9 +22,8 @@
             colors: {
               irl: {
                 bg: "#020617",
-                bgAlt: "#020617",
                 surface: "#020617",
-                accent: "#4ade80", // soft green
+                accent: "#4ade80",
                 accentSoft: "rgba(74, 222, 128, 0.12)",
               },
             },
@@ -34,7 +33,6 @@
     </script>
 
     <style>
-      /* Simple fade-in animation */
       .fade-in {
         animation: fade-in 0.6s ease-out both;
       }
@@ -48,7 +46,6 @@
           transform: translateY(0);
         }
       }
-      /* Slight glass effect */
       .glass {
         background: linear-gradient(
           to bottom right,
@@ -59,15 +56,15 @@
       }
     </style>
   </head>
+
   <body
     class="bg-irl-bg text-slate-100 min-h-screen antialiased selection:bg-irl-accent/30"
   >
-    <!-- Page wrapper -->
     <div
-      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-10 space-y-10"
+      class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-14"
     >
-      <!-- Header / Nav -->
-      <header class="flex items-center justify-between gap-4">
+      <!-- Header -->
+      <header class="flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div
             class="h-9 w-9 rounded-2xl border border-irl-accent/40 bg-irl-accentSoft flex items-center justify-center text-xs font-semibold tracking-wide"
@@ -75,550 +72,158 @@
             IRL
           </div>
           <div>
-            <h1 class="text-lg font-semibold tracking-tight">
-              IRL – In Real Life
-            </h1>
+            <h1 class="text-lg font-semibold tracking-tight">IRL</h1>
             <p class="text-xs text-slate-400">
-              A safety-first social layer for the real world.
+              A safety-first social layer for real life
             </p>
           </div>
         </div>
 
-        <nav class="hidden sm:flex items-center gap-5 text-xs text-slate-300">
-          <a href="#overview" class="hover:text-irl-accent transition">Overview</a>
-          <a href="#how-it-works" class="hover:text-irl-accent transition"
-            >How it works</a
-          >
-          <a href="#mvp" class="hover:text-irl-accent transition">MVP Product</a>
-          <a href="#safety" class="hover:text-irl-accent transition">Safety</a>
-          <a href="#roadmap" class="hover:text-irl-accent transition">Roadmap</a>
-        </nav>
-
         <button
           class="text-xs px-3 py-1.5 rounded-full border border-irl-accent/60 bg-irl-accentSoft hover:bg-irl-accent/20 text-irl-accent font-medium transition"
         >
-          Join the IRL Beta
+          Join the beta
         </button>
       </header>
 
-      <!-- HERO -->
-      <main class="space-y-16">
-        <section
-          id="overview"
-          class="grid md:grid-cols-[minmax(0,3fr),minmax(0,2fr)] gap-8 lg:gap-12 items-center fade-in"
+      <!-- HERO / OVERVIEW -->
+      <section
+        class="grid md:grid-cols-[minmax(0,3fr),minmax(0,2fr)] gap-10 items-center fade-in"
+      >
+        <div class="space-y-6">
+          <p
+            class="inline-flex items-center gap-2 text-xs rounded-full border border-irl-accent/40 bg-irl-accentSoft px-3 py-1 text-irl-accent"
+          >
+            <span class="h-1.5 w-1.5 rounded-full bg-irl-accent"></span>
+            Built for connection, not content
+          </p>
+
+          <h2
+            class="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight"
+          >
+            Find your people —
+            <span class="text-irl-accent">in real life.</span>
+          </h2>
+
+          <p class="text-sm sm:text-base text-slate-300 max-w-xl">
+            IRL helps people create and foster meaningful offline connections
+            through empathy, trust and safety, and shared interests and values.
+            It’s designed to get you off your phone and into real-world moments
+            that actually matter.
+          </p>
+
+          <div
+            class="grid sm:grid-cols-3 gap-4 text-xs sm:text-sm text-slate-300"
+          >
+            <div class="glass rounded-2xl border border-slate-800 px-4 py-3">
+              <span class="text-irl-accent text-xs font-semibold">Mission</span>
+              <p class="mt-1">
+                Help people feel less alone by making it easier and safer to
+                connect in person.
+              </p>
+            </div>
+
+            <div class="glass rounded-2xl border border-slate-800 px-4 py-3">
+              <span class="text-irl-accent text-xs font-semibold">Principle</span>
+              <p class="mt-1">
+                Human-scale networks, interest-based circles, and intentional
+                presence.
+              </p>
+            </div>
+
+            <div class="glass rounded-2xl border border-slate-800 px-4 py-3">
+              <span class="text-irl-accent text-xs font-semibold">Design</span>
+              <p class="mt-1">
+                Low-noise, low-pressure UI that nudges connection without forcing
+                performance.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept Card -->
+        <div
+          class="glass rounded-3xl border border-slate-800 px-6 py-6 space-y-4 text-sm"
         >
-          <div class="space-y-6">
-            <p
-              class="inline-flex items-center gap-2 text-xs rounded-full border border-irl-accent/40 bg-irl-accentSoft px-3 py-1 text-irl-accent"
-            >
-              <span class="h-1.5 w-1.5 rounded-full bg-irl-accent"></span>
-              Real-life over endless scrolling
+          <h3 class="font-semibold">The IRL model</h3>
+
+          <div class="space-y-3 text-slate-300">
+            <p>
+              <span class="text-irl-accent">Social Circles</span> organize people
+              by shared interests and context — not followers or popularity.
             </p>
-
-            <div class="space-y-3">
-              <h2 class="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
-                Help people find their people —
-                <span class="text-irl-accent">in real life.</span>
-              </h2>
-              <p class="text-sm sm:text-base text-slate-300 max-w-xl">
-                IRL is a social app that helps people create and foster meaningful
-                offline connections through
-                <span class="text-irl-accent">empathy</span>,
-                <span class="text-irl-accent">trust &amp; safety</span>, and
-                <span class="text-irl-accent">shared interests &amp; values</span>.
-              </p>
-            </div>
-
-            <div
-              class="grid sm:grid-cols-3 gap-3 sm:gap-4 text-xs sm:text-sm text-slate-300"
-            >
-              <div
-                class="glass rounded-2xl border border-slate-800 px-4 py-3 flex flex-col gap-1"
-              >
-                <span class="text-irl-accent text-xs font-semibold tracking-wide"
-                  >Mission</span
-                >
-                <p>
-                  Ease the loneliness epidemic by making it simple and safe to
-                  connect with the right people in the right places.
-                </p>
-              </div>
-              <div
-                class="glass rounded-2xl border border-slate-800 px-4 py-3 flex flex-col gap-1"
-              >
-                <span class="text-irl-accent text-xs font-semibold tracking-wide"
-                  >Core Idea</span
-                >
-                <p>
-                  Interest-based social circles + curated scenes + safety defaults,
-                  all grounded in Dunbar’s number.
-                </p>
-              </div>
-              <div
-                class="glass rounded-2xl border border-slate-800 px-4 py-3 flex flex-col gap-1"
-              >
-                <span class="text-irl-accent text-xs font-semibold tracking-wide"
-                  >No-noise Design</span
-                >
-                <p>
-                  Low-friction, low-cognitive-load UI that nudges you off the phone
-                  and into the real world.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex flex-wrap gap-3 text-xs text-slate-300">
-              <span
-                class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900/60"
-                >Interest-based circles</span
-              >
-              <span
-                class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900/60"
-                >Curated scenes &amp; places</span
-              >
-              <span
-                class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900/60"
-                >Safety &amp; privacy first</span
-              >
-              <span
-                class="px-3 py-1 rounded-full border border-slate-700 bg-slate-900/60"
-                >Archetypes &amp; personas</span
-              >
-            </div>
-          </div>
-
-          <!-- Right side: Concept card -->
-          <div
-            class="glass rounded-3xl border border-slate-800 px-5 sm:px-6 py-5 sm:py-6 space-y-4 text-xs sm:text-sm"
-          >
-            <h3 class="text-sm font-semibold text-slate-100">
-              The IRL mental model
-            </h3>
-            <p class="text-slate-300">
-              IRL is built around a few simple, opinionated concepts:
+            <p>
+              <span class="text-irl-accent">Scenes</span> describe anything from
+              planned events to spontaneous “I’m here, join me” moments.
             </p>
-
-            <div class="space-y-3">
-              <div class="flex gap-3">
-                <span class="mt-1 text-irl-accent">◎</span>
-                <div>
-                  <p class="font-medium text-slate-100">Social Circles</p>
-                  <p class="text-slate-400">
-                    Organize people by shared interests and context (&ldquo;art
-                    friends&rdquo;, &ldquo;pick-up soccer&rdquo;, &ldquo;neighbors&rdquo;),
-                    not just follower counts.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex gap-3">
-                <span class="mt-1 text-irl-accent">◈</span>
-                <div>
-                  <p class="font-medium text-slate-100">Scenes</p>
-                  <p class="text-slate-400">
-                    A flexible term for anything from ticketed shows to spontaneous
-                    &ldquo;I’m at Sea Witch, come hang&rdquo; broadcasts.
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex gap-3">
-                <span class="mt-1 text-irl-accent">∞</span>
-                <div>
-                  <p class="font-medium text-slate-100">Archetypes &amp; Personas</p>
-                  <p class="text-slate-400">
-                    Lightweight personas that tailor places, scenes, and people
-                    suggestions—without turning your life into “content.”
-                  </p>
-                </div>
-              </div>
-
-              <div class="flex gap-3">
-                <span class="mt-1 text-irl-accent">❤</span>
-                <div>
-                  <p class="font-medium text-slate-100">Safety by design</p>
-                  <p class="text-slate-400">
-                    Privacy-respecting presence, layered blocking/reporting, and
-                    geofence-aware features that never feel like surveillance.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <p>
+              <span class="text-irl-accent">Personas</span> adapt suggestions based
+              on who you are in that moment, without turning life into content.
+            </p>
+            <p>
+              <span class="text-irl-accent">Safety-first defaults</span> ensure you
+              always control reach, visibility, and presence.
+            </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- HOW IT WORKS -->
-        <section id="how-it-works" class="space-y-6 fade-in">
-          <div class="flex items-center justify-between gap-4">
-            <div>
-              <h3 class="text-xl sm:text-2xl font-semibold">How IRL works</h3>
-              <p class="text-sm text-slate-400 max-w-xl">
-                Designed for ultra-low friction: you set intent, IRL quietly matches
-                you with people, places, and scenes that fit.
-              </p>
-            </div>
+      <!-- HOW IRL WORKS -->
+      <section class="space-y-6 fade-in">
+        <div>
+          <h3 class="text-xl sm:text-2xl font-semibold">How IRL works</h3>
+          <p class="text-sm text-slate-400 max-w-xl">
+            A simple flow designed to support real-world connection without
+            overwhelming users.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-5 text-sm">
+          <div class="glass rounded-2xl border border-slate-800 px-4 py-4">
+            <span class="text-irl-accent text-xs font-semibold">1. Set intent</span>
+            <p class="mt-1 font-medium">
+              Tell IRL what you’re here for
+            </p>
+            <p class="mt-1 text-slate-400">
+              Deepen friendships, meet new people, discover places, date, or
+              explore — your intent shapes everything.
+            </p>
           </div>
 
-          <div class="grid md:grid-cols-4 gap-4 lg:gap-5 text-xs sm:text-sm">
-            <div
-              class="glass rounded-2xl border border-slate-800 px-4 py-4 flex flex-col gap-2"
+          <div class="glass rounded-2xl border border-slate-800 px-4 py-4">
+            <span class="text-irl-accent text-xs font-semibold"
+              >2. Build circles</span
             >
-              <span class="text-irl-accent text-xs font-semibold">1. Set intent</span>
-              <p class="text-slate-100 font-medium">
-                Choose what you’re here for
-              </p>
-              <p class="text-slate-400">
-                Deepen existing friendships, meet new people, discover places, date,
-                or some mix. IRL tailors everything from there.
-              </p>
-            </div>
+            <p class="mt-1 font-medium">Interest-based connections</p>
+            <p class="mt-1 text-slate-400">
+              Organize people into circles like art friends, neighbors, or
+              nightlife — keeping networks human-sized and relevant.
+            </p>
+          </div>
 
-            <div
-              class="glass rounded-2xl border border-slate-800 px-4 py-4 flex flex-col gap-2"
+          <div class="glass rounded-2xl border border-slate-800 px-4 py-4">
+            <span class="text-irl-accent text-xs font-semibold"
+              >3. Discover scenes</span
             >
-              <span class="text-irl-accent text-xs font-semibold"
-                >2. Build Social Circles</span
-              >
-              <p class="text-slate-100 font-medium">Interest-based, not clout-based</p>
-              <p class="text-slate-400">
-                Add connections into circles like <em>Art &amp; Culture</em>,
-                <em>Nightlife</em>, <em>Neighborhood</em>, <em>Sports &amp; Play</em>—
-                with Dunbar-inspired caps to keep things human-sized.
-              </p>
-            </div>
+            <p class="mt-1 font-medium">Map-first exploration</p>
+            <p class="mt-1 text-slate-400">
+              Find places and scenes that match your vibe, your circles, and
+              your current persona.
+            </p>
+          </div>
 
-            <div
-              class="glass rounded-2xl border border-slate-800 px-4 py-4 flex flex-col gap-2"
+          <div class="glass rounded-2xl border border-slate-800 px-4 py-4">
+            <span class="text-irl-accent text-xs font-semibold"
+              >4. Connect safely</span
             >
-              <span class="text-irl-accent text-xs font-semibold"
-                >3. Discover Scenes &amp; Places</span
-              >
-              <p class="text-slate-100 font-medium">Your kind of “out”</p>
-              <p class="text-slate-400">
-                A map-centric view of nearby scenes and venues, adapted to your
-                archetype, personas, and subtle signals like “want to go” lists and
-                micro-reactions.
-              </p>
-            </div>
-
-            <div
-              class="glass rounded-2xl border border-slate-800 px-4 py-4 flex flex-col gap-2"
-            >
-              <span class="text-irl-accent text-xs font-semibold">4. Connect, safely</span>
-              <p class="text-slate-100 font-medium">Broadcast when it matters</p>
-              <p class="text-slate-400">
-                Send precise, scoped signals—&ldquo;I’m open to hang&rdquo;,
-                &ldquo;Working from this café&rdquo;—to exactly the circles you
-                choose, with safe-mode and privacy controls built-in.
-              </p>
-            </div>
+            <p class="mt-1 font-medium">Scoped presence</p>
+            <p class="mt-1 text-slate-400">
+              Share where you are or what you’re open to — only with the people
+              and circles you choose.
+            </p>
           </div>
-        </section>
-
-        <!-- MVP PRODUCT SURFACE -->
-        <section id="mvp" class="space-y-6 fade-in">
-          <div class="flex items-center justify-between gap-4">
-            <div>
-              <h3 class="text-xl sm:text-2xl font-semibold">
-                Web-first MVP: one app, three anchors
-              </h3>
-              <p class="text-sm text-slate-400 max-w-xl">
-                A focused web app that covers the essential journeys before expanding
-                into richer native experiences.
-              </p>
-            </div>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-4 lg:gap-5 text-xs sm:text-sm">
-            <!-- Me tab -->
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-3">
-              <div class="flex items-center justify-between">
-                <p class="text-slate-100 font-semibold flex items-center gap-2">
-                  <span
-                    class="inline-flex h-6 w-6 rounded-full border border-slate-600 items-center justify-center text-[10px]"
-                    >ME</span
-                  >
-                  Me
-                </p>
-                <span class="text-[10px] text-slate-400">Profile &amp; presence</span>
-              </div>
-              <ul class="space-y-2 text-slate-300">
-                <li>• Minimal bio: photo, name, username, short “about.”</li>
-                <li>
-                  • Intent &amp; status: fun, context-rich states like
-                  &ldquo;Down for cozy drinks&rdquo; or &ldquo;Building in the
-                  corner booth.&rdquo;
-                </li>
-                <li>
-                  • Persona switcher: e.g. “On-shift bartender” vs “Off-duty social
-                  mode.”
-                </li>
-              </ul>
-            </div>
-
-            <!-- People / Social Circles -->
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-3">
-              <div class="flex items-center justify-between">
-                <p class="text-slate-100 font-semibold flex items-center gap-2">
-                  <span
-                    class="inline-flex h-6 w-6 rounded-full border border-slate-600 items-center justify-center text-[10px]"
-                    >◎</span
-                  >
-                  People &amp; Social Circles
-                </p>
-                <span class="text-[10px] text-slate-400">Dunbar-aware graph</span>
-              </div>
-              <ul class="space-y-2 text-slate-300">
-                <li>• Interest-based circles (art, nightlife, wellness, etc.).</li>
-                <li>
-                  • Soft caps (e.g. 150 per persona) with gentle pruning suggestions
-                  instead of hoarding.
-                </li>
-                <li>
-                  • Burner QR codes + invite tokens to add people nearby without
-                  oversharing your graph.
-                </li>
-              </ul>
-            </div>
-
-            <!-- Places & Scenes -->
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-3">
-              <div class="flex items-center justify-between">
-                <p class="text-slate-100 font-semibold flex items-center gap-2">
-                  <span
-                    class="inline-flex h-6 w-6 rounded-full border border-slate-600 items-center justify-center text-[10px]"
-                    >◎</span
-                  >
-                  Places &amp; Scenes
-                </p>
-                <span class="text-[10px] text-slate-400">Map-first view</span>
-              </div>
-              <ul class="space-y-2 text-slate-300">
-                <li>• Map as home base (powered by Google Maps / Places).</li>
-                <li>
-                  • Import or add your own favorite spots, tag them by vibe (chill,
-                  creative, romantic, etc.).
-                </li>
-                <li>
-                  • Create, save, or join Scenes: shows, dinners, co-working
-                  hangouts, spontaneous meetups.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- SAFETY & PRIVACY -->
-        <section id="safety" class="space-y-6 fade-in">
-          <div class="flex items-center justify-between gap-4">
-            <div>
-              <h3 class="text-xl sm:text-2xl font-semibold">
-                Safety, privacy, and trust by default
-              </h3>
-              <p class="text-sm text-slate-400 max-w-xl">
-                IRL is built on “do no harm” principles: you control what you share,
-                with whom, and when—backed by clear, enforceable safety rails.
-              </p>
-            </div>
-          </div>
-
-          <div class="grid md:grid-cols-2 gap-4 lg:gap-6 text-xs sm:text-sm">
-            <!-- Safe Mode & Location -->
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-3">
-              <p class="text-slate-100 font-semibold flex items-center gap-2">
-                <span class="inline-flex h-5 w-5 rounded-full bg-irl-accent/20"></span>
-                Safe mode &amp; location controls
-              </p>
-              <ul class="space-y-2 text-slate-300">
-                <li>
-                  • Location sharing options:
-                  <span class="text-irl-accent">Always off</span>,
-                  <span class="text-irl-accent">While using</span> (recommended),
-                  <span class="text-irl-accent">Always on</span> (opt-in).
-                </li>
-                <li>
-                  • Geofencing is silent—no public “you’re outside the zone” tells,
-                  and no precise trails.
-                </li>
-                <li>
-                  • Safe Mode presets: conservative defaults that reduce reachability,
-                  hide certain signals, and limit discovery when needed.
-                </li>
-                <li>
-                  • Data minimization: store only what’s necessary to make IRL
-                  work—not a location history someone could weaponize.
-                </li>
-              </ul>
-            </div>
-
-            <!-- Blocking & Reporting -->
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-3">
-              <p class="text-slate-100 font-semibold flex items-center gap-2">
-                <span class="inline-flex h-5 w-5 rounded-full bg-irl-accent/20"></span>
-                Layered blocking &amp; moderation
-              </p>
-              <ul class="space-y-2 text-slate-300">
-                <li>
-                  • <strong>Hide &amp; mute</strong>: they disappear from your
-                  broadcasts; you fade from theirs, but profiles remain separate.
-                </li>
-                <li>
-                  • <strong>Remove connection</strong>: they drop from your circles
-                  and can’t see your scoped broadcasts.
-                </li>
-                <li>
-                  • <strong>Block &amp; report</strong>: hard boundary. If someone is
-                  blocked or reported enough times, their account is suspended and
-                  reviewed by moderators.
-                </li>
-                <li>
-                  • All actions are designed to reduce social fallout—no harsh public
-                  signals, just better boundaries.
-                </li>
-              </ul>
-            </div>
-
-            <!-- Loyalty & presence -->
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-3">
-              <p class="text-slate-100 font-semibold flex items-center gap-2">
-                <span class="inline-flex h-5 w-5 rounded-full bg-irl-accent/20"></span>
-                Loyalty &amp; presence (for venues)
-              </p>
-              <ul class="space-y-2 text-slate-300">
-                <li>
-                  • Optional loyalty “stamps” that reward real visits without extra
-                  work for businesses.
-                </li>
-                <li>
-                  • Configurable presence timer (e.g. 5+ minutes inside a geofence)
-                  before a visit can be claimed.
-                </li>
-                <li>
-                  • One visit credit per day per venue to reduce abuse.
-                </li>
-                <li>
-                  • Optional QR/NFC stickers as a low-lift “proof of presence” for
-                  higher-value rewards.
-                </li>
-              </ul>
-            </div>
-
-            <!-- Philosophy -->
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-3">
-              <p class="text-slate-100 font-semibold flex items-center gap-2">
-                <span class="inline-flex h-5 w-5 rounded-full bg-irl-accent/20"></span>
-                Product philosophy
-              </p>
-              <ul class="space-y-2 text-slate-300">
-                <li>• No infinite feeds, no algorithmic outrage loops.</li>
-                <li>
-                  • Everything orients around <em>today’s</em> possible connections,
-                  not “someday” fame.
-                </li>
-                <li>
-                  • Designed to be multi-generational: language, flows, and visuals
-                  work for 20-somethings and 60-somethings alike.
-                </li>
-                <li>
-                  • Revenue aligned with user value (e.g. premium connection limits,
-                  place tools, and ethical partnerships—not selling attention
-                  exhaust).
-                </li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- ROADMAP / PHASES -->
-        <section id="roadmap" class="space-y-6 fade-in">
-          <div class="flex items-center justify-between gap-4">
-            <div>
-              <h3 class="text-xl sm:text-2xl font-semibold">Build phases</h3>
-              <p class="text-sm text-slate-400 max-w-xl">
-                A product-forward, experiment-heavy approach that respects both the
-                technical stack and the social dynamics we’re trying to serve.
-              </p>
-            </div>
-          </div>
-
-          <div class="grid md:grid-cols-3 gap-4 lg:gap-5 text-xs sm:text-sm">
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-2">
-              <p class="text-slate-100 font-semibold">
-                Phase 0 – Concept &amp; Design
-              </p>
-              <ul class="space-y-1 text-slate-300">
-                <li>• Define archetypes &amp; personas.</li>
-                <li>• Map key journeys: connect, explore, meet up.</li>
-                <li>• Low-fi wireframes → clickable prototypes.</li>
-                <li>• Validate with small, trusted groups.</li>
-              </ul>
-            </div>
-
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-2">
-              <p class="text-slate-100 font-semibold">
-                Phase 1 – Web MVP &amp; Private Beta
-              </p>
-              <ul class="space-y-1 text-slate-300">
-                <li>
-                  • Web app with <strong>Me</strong>, <strong>People</strong>, and
-                  <strong>Places &amp; Scenes</strong>.
-                </li>
-                <li>• Supabase-backed auth &amp; data with privacy-first schema.</li>
-                <li>• Basic presence signals &amp; scoped broadcasts.</li>
-                <li>
-                  • Early venue tools (loyalty, scene creation) with a handful of
-                  launch partners.
-                </li>
-              </ul>
-            </div>
-
-            <div class="glass rounded-2xl border border-slate-800 px-4 py-4 space-y-2">
-              <p class="text-slate-100 font-semibold">
-                Phase 2+ – Mobile, Growth &amp; Monetization
-              </p>
-              <ul class="space-y-1 text-slate-300">
-                <li>• Native apps with richer presence &amp; notifications.</li>
-                <li>
-                  • Smarter matching using social graph, archetypes, and place tags.
-                </li>
-                <li>
-                  • Premium tiers (more personas, advanced filters, venue tooling).
-                </li>
-                <li>• City-by-city rollout with curated local networks.</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        <!-- FOOTER / CTA -->
-        <section class="pt-4 border-t border-slate-800/70 fade-in">
-          <div
-            class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs sm:text-sm"
-          >
-            <div class="space-y-1">
-              <p class="text-slate-100 font-semibold">
-                IRL · building the social layer that ends at the door, not the doom
-                scroll.
-              </p>
-              <p class="text-slate-400 max-w-xl">
-                This is a living concept. As we test in the real world, we’ll refine
-                archetypes, scenes, and safety tools based on what actually helps
-                people feel more connected—and more safe—offline.
-              </p>
-            </div>
-            <div class="flex flex-col items-start gap-2 min-w-[200px]">
-              <button
-                class="w-full text-xs sm:text-sm px-3 py-2 rounded-full border border-irl-accent/60 bg-irl-accentSoft hover:bg-irl-accent/25 text-irl-accent font-medium transition"
-              >
-                Request early access
-              </button>
-              <p class="text-[11px] text-slate-500">
-                For founders, collaborators, and pilot venues.
-              </p>
-            </div>
-          </div>
-        </section>
-      </main>
+        </div>
+      </section>
     </div>
   </body>
 </html>
