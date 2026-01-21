@@ -1,4 +1,409 @@
-<html>
-  <head><title>IRL Labs, LLC</title></head>
-  <body>Hello there.</body>
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>IRL – Where the Internet Shows Up In Real Life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tailwind Play CDN -->
+    <script src="https://cdn.tailwindcss.com/"></script>
+
+    <!-- Tailwind v4 dark mode configuration (class-based) -->
+    <style type="text/tailwindcss">
+      @variant dark (&:where(.dark, .dark *));
+    </style>
+
+    <!-- Custom Tailwind config (optional brand colors) -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              irl: {
+                accent: "#22c55e",
+                soft: "#1e293b"
+              }
+            }
+          }
+        }
+      };
+    </script>
+
+    <!-- Dark mode script with localStorage -->
+    <script>
+      const THEME_KEY = "irl-theme";
+
+      function applyTheme(theme) {
+        const root = document.documentElement;
+        if (theme === "dark") {
+          root.classList.add("dark");
+        } else {
+          root.classList.remove("dark");
+        }
+      }
+
+      function getPreferredTheme() {
+        const stored = localStorage.getItem(THEME_KEY);
+        if (stored === "light" || stored === "dark") return stored;
+        return window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light";
+      }
+
+      function toggleTheme() {
+        const isDark = document.documentElement.classList.contains("dark");
+        const next = isDark ? "light" : "dark";
+        applyTheme(next);
+        localStorage.setItem(THEME_KEY, next);
+      }
+
+      // Apply theme ASAP
+      applyTheme(getPreferredTheme());
+    </script>
+  </head>
+
+  <body class="bg-slate-950 text-slate-100 antialiased">
+    <!-- Page wrapper -->
+    <div class="min-h-screen flex flex-col">
+
+      <!-- Top nav -->
+      <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="h-8 w-8 rounded-xl bg-gradient-to-br from-emerald-400 to-sky-500 flex items-center justify-center text-xs font-black tracking-tight">
+              IRL
+            </div>
+            <div class="hidden sm:flex flex-col leading-tight">
+              <span class="text-sm font-semibold">IRL</span>
+              <span class="text-xs text-slate-400">Where the internet shows up in real life</span>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-4 text-xs sm:text-sm">
+            <button
+              onclick="toggleTheme()"
+              class="inline-flex items-center gap-1 rounded-full border border-slate-700/80 bg-slate-900/70 px-3 py-1 text-slate-300 hover:border-slate-500 hover:text-white transition"
+            >
+              <span class="hidden sm:inline">Toggle theme</span>
+              <span aria-hidden="true">🌙</span>
+            </button>
+            <a
+              href="#cta"
+              class="hidden sm:inline-flex items-center rounded-full bg-emerald-500 px-4 py-1.5 text-xs font-medium text-slate-950 hover:bg-emerald-400 transition"
+            >
+              Request early access
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <main class="flex-1">
+        <!-- Hero -->
+        <section class="border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-10 lg:gap-16 items-center">
+            <div class="space-y-6">
+              <p class="text-xs font-semibold tracking-[0.2em] text-emerald-400 uppercase">
+                IRL · Founder Preview
+              </p>
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
+                Turn online communities into <span class="text-emerald-400">offline magic</span>.
+              </h1>
+              <p class="text-sm sm:text-base text-slate-300 max-w-xl">
+                IRL is a lightweight operating system for real‑world gatherings: discovery, coordination, and follow‑up for the people who actually show up.
+              </p>
+
+              <dl class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
+                <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
+                  <dt class="text-slate-400">Target users</dt>
+                  <dd class="mt-1 font-medium text-slate-100">
+                    Creators, community leads, city builders, power hosts.
+                  </dd>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
+                  <dt class="text-slate-400">Core promise</dt>
+                  <dd class="mt-1 font-medium text-slate-100">
+                    Less group chat chaos, more faces you actually know in the room.
+                  </dd>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-3 sm:col-span-2 sm:max-w-xs">
+                  <dt class="text-slate-400">AI angle</dt>
+                  <dd class="mt-1 font-medium text-slate-100">
+                    Assistants that understand relationships, not just RSVPs.
+                  </dd>
+                </div>
+              </dl>
+
+              <div class="flex flex-col sm:flex-row gap-3 pt-2" id="cta">
+                <a
+                  href="mailto:founders@joinirl.com?subject=IRL%20Founder%20Preview"
+                  class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-medium text-slate-950 hover:bg-emerald-400 transition"
+                >
+                  Request early access
+                </a>
+                <a
+                  href="#product"
+                  class="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-900/60 px-5 py-2.5 text-sm font-medium text-slate-200 hover:border-slate-500 hover:text-white transition"
+                >
+                  View product vision
+                </a>
+              </div>
+
+              <p class="text-[0.7rem] text-slate-500 max-w-md">
+                Built from lessons across products like Foursquare, Airbnb, Partiful and the latest wave of AI‑native tools. Designed for 2026, not 2012.
+              </p>
+            </div>
+
+            <!-- Product snapshot card -->
+            <div class="space-y-4">
+              <div class="rounded-2xl border border-slate-800 bg-slate-900/70 shadow-xl shadow-emerald-500/5 p-4 sm:p-5">
+                <div class="flex items-center justify-between mb-4">
+                  <div>
+                    <p class="text-xs font-medium text-emerald-400">IRL Session</p>
+                    <p class="text-sm text-slate-300">Weekend in New York · 18 confirmed</p>
+                  </div>
+                  <span class="inline-flex items-center rounded-full bg-emerald-500/10 px-2.5 py-1 text-[0.7rem] font-medium text-emerald-300 border border-emerald-500/30">
+                    Live runbook
+                  </span>
+                </div>
+
+                <div class="grid gap-3 text-xs text-slate-200">
+                  <div class="flex items-start justify-between gap-3">
+                    <div>
+                      <p class="font-medium">People graph</p>
+                      <p class="text-slate-400 mt-0.5">
+                        See who actually overlaps across your Discord, group chats, and city.
+                      </p>
+                    </div>
+                    <span class="text-[0.65rem] text-slate-500">Before</span>
+                  </div>
+
+                  <div class="flex items-start justify-between gap-3">
+                    <div>
+                      <p class="font-medium">Adaptive invite rails</p>
+                      <p class="text-slate-400 mt-0.5">
+                        Tight controls for who can invite whom, tuned for intimacy vs scale.
+                      </p>
+                    </div>
+                    <span class="text-[0.65rem] text-slate-500">During</span>
+                  </div>
+
+                  <div class="flex items-start justify-between gap-3">
+                    <div>
+                      <p class="font-medium">Memory layer</p>
+                      <p class="text-slate-400 mt-0.5">
+                        Auto‑organized recaps, photos, and intros so each event seeds the next.
+                      </p>
+                    </div>
+                    <span class="text-[0.65rem] text-slate-500">After</span>
+                  </div>
+                </div>
+              </div>
+
+              <p class="text-[0.72rem] text-slate-500">
+                This is a concept snapshot, not final UI. The goal is opinionated tooling that respects social nuance, not yet another mass‑blast event link.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Product pillars -->
+        <section id="product" class="border-b border-slate-800/80 bg-slate-950">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            <div class="flex items-end justify-between gap-4 mb-8">
+              <div>
+                <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">
+                  Product pillars
+                </h2>
+                <p class="text-sm text-slate-400 mt-1 max-w-xl">
+                  Three legs of the IRL stool: discovery, coordination, and continuity. Each is built to play nicely with the tools communities already live in.
+                </p>
+              </div>
+              <span class="text-[0.7rem] text-slate-500 hidden sm:inline">
+                Opinionated where it matters, invisible where it doesn’t.
+              </span>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-5">
+              <!-- Pillar 1 -->
+              <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 sm:p-5 flex flex-col gap-3">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  1 · Discovery that respects context
+                </h3>
+                <p class="text-sm text-slate-300">
+                  IRL treats “who should be in the room” as a first‑class problem, not an afterthought bolted onto a calendar invite.
+                </p>
+                <ul class="mt-1 space-y-1.5 text-xs text-slate-400">
+                  <li>• Soft circles and trust‑weighted invites instead of open links.</li>
+                  <li>• Signals from existing communities (Discord, WhatsApp, Telegram, email).</li>
+                  <li>• City‑level intent: “who’s hosting dinner this Thursday in Brooklyn?”</li>
+                </ul>
+              </article>
+
+              <!-- Pillar 2 -->
+              <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 sm:p-5 flex flex-col gap-3">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  2 · Coordination without group chat chaos
+                </h3>
+                <p class="text-sm text-slate-300">
+                  Hosts get a clear runbook, guests get exactly what they need and nothing more.
+                </p>
+                <ul class="mt-1 space-y-1.5 text-xs text-slate-400">
+                  <li>• Lightweight flows for RSVPs, plus‑ones, and “maybe” handling.</li>
+                  <li>• Playbooks for recurring formats like salons, walks, and work sessions.</li>
+                  <li>• Real‑time state: “who’s actually here”, “who’s on the way”, “who’s late”.</li>
+                </ul>
+              </article>
+
+              <!-- Pillar 3 -->
+              <article class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 sm:p-5 flex flex-col gap-3">
+                <h3 class="text-sm font-semibold text-slate-100">
+                  3 · Continuity between moments
+                </h3>
+                <p class="text-sm text-slate-300">
+                  Every gathering is an input to the next one: who met, what clicked, what should happen again.
+                </p>
+                <ul class="mt-1 space-y-1.5 text-xs text-slate-400">
+                  <li>• Automatic, opt‑in shared recaps instead of scattered photo dumps.</li>
+                  <li>• Memory graph of who overlapped where, across time and cities.</li>
+                  <li>• Prompts for “next best” gathering when the energy is still high.</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <!-- AI + system design -->
+        <section class="border-b border-slate-800/80 bg-slate-950">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid lg:grid-cols-2 gap-8 lg:gap-12">
+            <div class="space-y-4">
+              <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">
+                AI native, socially aware
+              </h2>
+              <p class="text-sm text-slate-300">
+                The goal is not “AI that writes event descriptions”, but assistants that actually understand your social graph, constraints, and appetite for surface area.
+              </p>
+              <ul class="space-y-2 text-xs sm:text-sm text-slate-300">
+                <li>• Copilot for hosts that proposes guest lists, formats, and timings per city.</li>
+                <li>• Semantic understanding of “vibe” and boundaries, not just availability.</li>
+                <li>• Privacy by default: the model sees patterns, not raw private messages.</li>
+              </ul>
+              <p class="text-xs text-slate-500 max-w-md">
+                This leans on the 2025‑era foundation model stack: small, fast, local‑friendly models for on‑device inference, plus hosted LLMs for heavier social reasoning.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <h3 class="text-sm font-semibold text-slate-100">
+                System principles
+              </h3>
+              <div class="grid gap-3 text-xs sm:text-sm">
+                <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
+                  <p class="font-medium text-slate-100">IRL over MAUs</p>
+                  <p class="text-slate-400 mt-1">
+                    Optimized for repeat, high‑quality in‑person touchpoints, not raw usage time or vanity metrics.
+                  </p>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
+                  <p class="font-medium text-slate-100">Network‑aware, not network‑effect‑addicted</p>
+                  <p class="text-slate-400 mt-1">
+                    Useful for a single host and their graph on day one, but capable of city‑scale density.
+                  </p>
+                </div>
+                <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
+                  <p class="font-medium text-slate-100">Interoperable by default</p>
+                  <p class="text-slate-400 mt-1">
+                    Plays nicely with calendars, messaging apps, and existing communities instead of trying to replace them.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Roadmap + who this is for -->
+        <section class="bg-slate-950">
+          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-16">
+            <div class="space-y-4">
+              <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">
+                Near‑term roadmap
+              </h2>
+              <ol class="space-y-2 text-xs sm:text-sm text-slate-300 list-decimal list-inside">
+                <li>
+                  Private host console for “IRL power users” in cities like New York, SF, LA, London.
+                </li>
+                <li>
+                  Simple flows for recurring formats (dinners, walks, salons) with opinionated defaults.
+                </li>
+                <li>
+                  Lightweight guest experience that surfaces just‑in‑time context and follow‑ups.
+                </li>
+                <li>
+                  Deeper integrations into Discord / WhatsApp / Telegram and personal calendars.
+                </li>
+              </ol>
+              <p class="text-xs text-slate-500">
+                Long‑term, IRL should feel like an ambient layer: you notice it most when it disappears, not when it’s working.
+              </p>
+            </div>
+
+            <div class="space-y-4">
+              <h3 class="text-sm font-semibold text-slate-100">
+                Who should talk to us
+              </h3>
+              <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-300">
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5">
+                  <p class="font-medium text-slate-100">City builders</p>
+                  <p class="text-slate-400">
+                    People already running dinners, clubs, pop‑ups, retreats, or cowork rituals.
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5">
+                  <p class="font-medium text-slate-100">Communities with gravity</p>
+                  <p class="text-slate-400">
+                    Discords, Telegram groups, and member‑driven collectives that want more IRL.
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5">
+                  <p class="font-medium text-slate-100">Creators & founders</p>
+                  <p class="text-slate-400">
+                    Folks whose work already pulls people into the same city or neighborhood.
+                  </p>
+                </div>
+                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5">
+                  <p class="font-medium text-slate-100">Infra partners</p>
+                  <p class="text-slate-400">
+                    Teams building the next generation of social, calendar, or AI infra primitives.
+                  </p>
+                </div>
+              </div>
+
+              <div class="pt-2">
+                <a
+                  href="mailto:founders@joinirl.com?subject=IRL%20-%20Let%E2%80%99s%20Talk"
+                  class="inline-flex items-center gap-1 rounded-full border border-emerald-500/60 bg-emerald-500/10 px-4 py-2 text-xs sm:text-sm font-medium text-emerald-300 hover:bg-emerald-500/20 transition"
+                >
+                  Share how you’re already bringing people together
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-slate-800 bg-slate-950/90">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p class="text-[0.7rem] text-slate-500">
+            IRL · Early concept deck rendered as a single HTML file · 2026
+          </p>
+          <p class="text-[0.7rem] text-slate-500">
+            Built with Tailwind Play CDN & class‑based dark mode.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
+
