@@ -321,88 +321,103 @@
           </div>
         </section>
 
-        <!-- Roadmap + who this is for -->
-        <section class="bg-slate-950">
-          <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 grid lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] gap-10 lg:gap-16">
-            <div class="space-y-4">
-              <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">
-                Near‑term roadmap
-              </h2>
-              <ol class="space-y-2 text-xs sm:text-sm text-slate-300 list-decimal list-inside">
-                <li>
-                  Private host console for “IRL power users” in cities like New York, SF, LA, London.
-                </li>
-                <li>
-                  Simple flows for recurring formats (dinners, walks, salons) with opinionated defaults.
-                </li>
-                <li>
-                  Lightweight guest experience that surfaces just‑in‑time context and follow‑ups.
-                </li>
-                <li>
-                  Deeper integrations into Discord / WhatsApp / Telegram and personal calendars.
-                </li>
-              </ol>
-              <p class="text-xs text-slate-500">
-                Long‑term, IRL should feel like an ambient layer: you notice it most when it disappears, not when it’s working.
-              </p>
-            </div>
-
-            <div class="space-y-4">
-              <h3 class="text-sm font-semibold text-slate-100">
-                Who should talk to us
-              </h3>
-              <div class="grid sm:grid-cols-2 gap-4 text-xs sm:text-sm text-slate-300">
-                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5">
-                  <p class="font-medium text-slate-100">City builders</p>
-                  <p class="text-slate-400">
-                    People already running dinners, clubs, pop‑ups, retreats, or cowork rituals.
-                  </p>
-                </div>
-                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5">
-                  <p class="font-medium text-slate-100">Communities with gravity</p>
-                  <p class="text-slate-400">
-                    Discords, Telegram groups, and member‑driven collectives that want more IRL.
-                  </p>
-                </div>
-                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5">
-                  <p class="font-medium text-slate-100">Creators & founders</p>
-                  <p class="text-slate-400">
-                    Folks whose work already pulls people into the same city or neighborhood.
-                  </p>
-                </div>
-                <div class="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 space-y-1.5">
-                  <p class="font-medium text-slate-100">Infra partners</p>
-                  <p class="text-slate-400">
-                    Teams building the next generation of social, calendar, or AI infra primitives.
-                  </p>
-                </div>
-              </div>
-
-              <div class="pt-2">
-                <a
-                  href="mailto:founders@joinirl.com?subject=IRL%20-%20Let%E2%80%99s%20Talk"
-                  class="inline-flex items-center gap-1 rounded-full border border-emerald-500/60 bg-emerald-500/10 px-4 py-2 text-xs sm:text-sm font-medium text-emerald-300 hover:bg-emerald-500/20 transition"
-                >
-                  Share how you’re already bringing people together
-                  <span aria-hidden="true">→</span>
-                </a>
-              </div>
-            </div>
+          <!-- Roadmap + who this is for -->
+      <section class="bg-slate-950">
+        ...
+      </section>
+    </main>
+    
+    <!-- Contact -->
+    <section id="contact" class="border-t border-slate-800 bg-slate-950">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight mb-2">
+          Contact IRL with Friends
+        </h2>
+        <p class="text-sm text-slate-400 mb-6">
+          For privacy questions, data requests, or general inquiries, use the form
+          below or email <a href="mailto:hello@irlwithfriends.com" class="text-emerald-400 underline">hello@irlwithfriends.com</a>.
+        </p>
+    
+        <form
+          action="https://formspree.io/f/YOUR_FORM_ID"
+          method="POST"
+          class="space-y-4"
+        >
+          <div>
+            <label class="block text-sm text-slate-200 mb-1">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              required
+              class="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            />
           </div>
-        </section>
-      </main>
-
-      <!-- Footer -->
-      <footer class="border-t border-slate-800 bg-slate-950/90">
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-          <p class="text-[0.7rem] text-slate-500">
-            IRL · Early concept deck rendered as a single HTML file · 2026
-          </p>
-          <p class="text-[0.7rem] text-slate-500">
-            Built with Tailwind Play CDN & class‑based dark mode.
-          </p>
-        </div>
-      </footer>
-    </div>
-  </body>
-</html>
+    
+          <div>
+            <label class="block text-sm text-slate-200 mb-1">
+              Email address
+            </label>
+            <input
+              type="email"
+              name="_replyto"
+              required
+              class="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            />
+          </div>
+    
+          <div>
+            <label class="block text-sm text-slate-200 mb-1">
+              Subject
+            </label>
+            <input
+              type="text"
+              name="subject"
+              required
+              class="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            />
+          </div>
+    
+          <div>
+            <label class="block text-sm text-slate-200 mb-1">
+              Message
+            </label>
+            <textarea
+              name="message"
+              rows="5"
+              required
+              class="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+            ></textarea>
+          </div>
+    
+          <!-- Tag that it's privacy-related (optional) -->
+          <input type="hidden" name="reason" value="Privacy / data request" />
+          <!-- Spam honeypot -->
+          <input type="text" name="_gotcha" style="display:none" />
+    
+          <button
+            type="submit"
+            class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-medium text-slate-950 hover:bg-emerald-400 transition"
+          >
+            Send message
+          </button>
+        </form>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-950/90">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+        <p class="text-[0.7rem] text-slate-500">
+          IRL · Early concept deck rendered as a single HTML file · 2026
+        </p>
+        <p class="text-[0.7rem] text-slate-500">
+          Built with Tailwind Play CDN & class‑based dark mode.
+          <!-- Add a simple contact link -->
+          <a href="#contact" class="ml-2 text-emerald-400 underline">
+            Contact
+          </a>
+        </p>
+      </div>
+    </footer>
