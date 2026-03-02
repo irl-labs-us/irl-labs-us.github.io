@@ -1,450 +1,214 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>IRL – Keep It Real. Connect with Friends in Real Life.</title>
-  <meta name="description" content="IRL is the app for real-world connection. Create Scenes with your people, discover IRL venues, and keep it real. Now in public beta." />
+  <meta charset="UTF-8">
+  <title>IRL — Where the Internet Shows Up In Real Life</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            brand: {
-              mint: '#4DF0B4',
-              purple: '#7C3AED',
-              pink: '#EC4899',
-            }
-          },
-          backgroundImage: {
-            'hero-gradient': 'linear-gradient(135deg, #1a0533 0%, #2d1060 35%, #1a2a4a 70%, #0d2a2a 100%)',
-            'card-gradient': 'linear-gradient(135deg, rgba(76,208,180,0.08) 0%, rgba(124,58,237,0.08) 100%)',
-          }
-        }
-      }
-    }
-  </script>
-  <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    .phone-shadow { filter: drop-shadow(0 32px 64px rgba(0,0,0,0.6)) drop-shadow(0 0 40px rgba(77,240,180,0.1)); }
-    .glow-mint { box-shadow: 0 0 40px rgba(77,240,180,0.2); }
-    .glow-purple { box-shadow: 0 0 40px rgba(124,58,237,0.3); }
-    .badge-live { animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; }
-    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.6} }
-    .screenshot-frame {
-      border-radius: 44px;
-      border: 2px solid rgba(255,255,255,0.12);
-      overflow: hidden;
-      background: #0a0a0a;
-    }
-    .feature-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .feature-card:hover { border-color: rgba(77,240,180,0.3); transform: translateY(-2px); }
-    .nav-blur {
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      background: rgba(10,10,20,0.8);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #4DF0B4, #3BC4A0);
-      color: #0a0a0a;
-      font-weight: 700;
-      border-radius: 50px;
-      transition: opacity 0.2s, transform 0.15s;
-    }
-    .btn-primary:hover { opacity: 0.9; transform: scale(1.02); }
-    .btn-ghost {
-      border: 1.5px solid rgba(77,240,180,0.4);
-      color: #4DF0B4;
-      border-radius: 50px;
-      transition: background 0.2s;
-    }
-    .btn-ghost:hover { background: rgba(77,240,180,0.08); }
-    .section-divider { border-color: rgba(255,255,255,0.06); }
-    .tag {
-      background: rgba(77,240,180,0.12);
-      color: #4DF0B4;
-      border: 1px solid rgba(77,240,180,0.25);
-      border-radius: 50px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 3px 12px;
-    }
-    .coming-soon-badge {
-      background: rgba(236,72,153,0.15);
-      color: #EC4899;
-      border: 1px solid rgba(236,72,153,0.3);
-      border-radius: 50px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      padding: 3px 12px;
-    }
-    .roadmap-chip {
-      background: rgba(124,58,237,0.15);
-      border: 1px solid rgba(124,58,237,0.3);
-      border-radius: 12px;
-      transition: border-color 0.2s;
-    }
-    .roadmap-chip:hover { border-color: rgba(124,58,237,0.6); }
-    input, textarea, select {
-      background: rgba(255,255,255,0.05) !important;
-      border: 1px solid rgba(255,255,255,0.12) !important;
-      color: #fff !important;
-      border-radius: 10px !important;
-    }
-    input:focus, textarea:focus { outline: none !important; border-color: rgba(77,240,180,0.5) !important; }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-thumb { background: rgba(77,240,180,0.3); border-radius: 4px; }
+  <style type="text/tailwindcss">
+    @variant dark (:where(.dark, .dark *));
   </style>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { 'irl-accent': '#22c55e', 'soft': '#1e293b' } } } }
+  </script>
+  <script>
+    const THEME_KEY = 'irl-theme';
+    function applyTheme(theme) {
+      const root = document.documentElement;
+      if (theme === 'dark') root.classList.add('dark');
+      else root.classList.remove('dark');
+    }
+    function getPreferredTheme() {
+      const stored = localStorage.getItem(THEME_KEY);
+      if (stored === 'light' || stored === 'dark') return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.contains('dark');
+      const next = isDark ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem(THEME_KEY, next);
+    }
+    applyTheme(getPreferredTheme());
+  </script>
 </head>
-<body class="bg-gray-950 text-white min-h-screen">
+<body class="bg-slate-950 text-slate-100 antialiased">
+<div class="min-h-screen flex flex-col">
 
-<!-- NAV -->
-<nav class="nav-blur fixed top-0 left-0 right-0 z-50">
-  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-    <a href="#" class="text-2xl font-black tracking-tight text-white flex items-center gap-2">
-      <span style="font-style:italic; color:#4DF0B4;">irl</span>
-    </a>
-    <div class="hidden md:flex items-center gap-8 text-sm text-gray-400">
-      <a href="#features" class="hover:text-white transition-colors">Features</a>
-      <a href="#screenshots" class="hover:text-white transition-colors">App</a>
-      <a href="#explore" class="hover:text-white transition-colors">Explore</a>
-      <a href="#roadmap" class="hover:text-white transition-colors">Roadmap</a>
-      <a href="#team" class="hover:text-white transition-colors">Team</a>
-      <a href="#contact" class="hover:text-white transition-colors">Contact</a>
-    </div>
-    <a href="https://testflight.apple.com/join/vG7BfAjr" target="_blank" rel="noopener"
-       class="btn-primary px-5 py-2 text-sm flex items-center gap-2">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      Join Beta
-    </a>
-  </div>
-</nav>
+  <!-- ═══ NAV ═══ -->
+  <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
 
-<!-- HERO -->
-<section class="pt-32 pb-20 px-6" style="background: linear-gradient(135deg, #090015 0%, #1a0b35 40%, #0d1a2e 70%, #061818 100%);">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-    <div>
-      <div class="tag mb-6 inline-block">Public Beta · Now Available</div>
-      <h1 class="text-5xl md:text-6xl font-black leading-tight mb-6">
-        Keep it real.<br/>
-        <span style="color:#4DF0B4;">Connect with<br/>friends in real life.</span>
-      </h1>
-      <p class="text-gray-400 text-lg mb-8 leading-relaxed">
-        IRL is the social app built for the real world. Create Scenes — live, upcoming, or recurring hangouts — share them with your Circles, and discover what's happening nearby. Less group chat chaos. More actual time with the people you like.
-      </p>
-      <div class="flex flex-wrap gap-4">
+      <!-- Logo -->
+      <div class="flex items-center gap-3">
+        <img src="irl-icon.png" alt="IRL app icon" class="h-9 w-9 rounded-2xl shadow-md">
+        <div class="hidden sm:flex flex-col leading-tight">
+          <span class="text-sm font-semibold">IRL</span>
+          <span class="text-xs text-slate-400">Where the internet shows up in real life</span>
+        </div>
+      </div>
+
+      <!-- Nav actions -->
+      <div class="flex items-center gap-3 text-xs sm:text-sm">
+        <button onclick="toggleTheme()" class="inline-flex items-center gap-1 rounded-full border border-slate-700/80 bg-slate-900/70 px-3 py-1 text-slate-300 hover:border-slate-500 hover:text-white transition">
+          <span class="hidden sm:inline">Toggle theme</span>
+          <span aria-hidden="true">◑</span>
+        </button>
         <a href="https://testflight.apple.com/join/vG7BfAjr" target="_blank" rel="noopener"
-           class="btn-primary px-8 py-4 text-base flex items-center gap-3">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-          Download on TestFlight
+           class="inline-flex items-center rounded-full bg-emerald-500 px-4 py-1.5 text-xs font-semibold text-slate-950 hover:bg-emerald-400 transition">
+          Join Beta
         </a>
-        <a href="#features" class="btn-ghost px-8 py-4 text-base">See how it works</a>
       </div>
-      <p class="text-gray-600 text-sm mt-4">iOS · Free public beta · No waitlist</p>
     </div>
-    <div class="flex justify-center md:justify-end gap-4">
-      <!-- Splash screen mockup -->
-      <div class="phone-shadow" style="width:200px;">
-        <div class="screenshot-frame">
-          <img src="https://irlwithfriends.com/splash.png"
-               onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-               alt="IRL App" style="width:100%; border-radius:42px;" />
-          <div style="display:none; width:200px; height:430px; background:linear-gradient(135deg,#4a1080,#ec4899,#1a4a6a); border-radius:42px; align-items:center; justify-content:center; flex-direction:column; gap:12px; padding:20px;">
-            <div style="font-size:2.5rem; font-weight:900; font-style:italic; color:white; letter-spacing:-1px;">irl</div>
-            <div style="color:rgba(255,255,255,0.9); font-size:1.1rem; font-weight:700; text-align:center;">Keep it real.</div>
-            <div style="color:rgba(255,255,255,0.7); font-size:0.8rem; text-align:center;">Connect with friends<br/>in real life</div>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="border-b border-slate-800/80 bg-gradient-to-b from-slate-950 via-slate-950 to-slate-900">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 grid lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] gap-10 lg:gap-16 items-center">
+
+      <!-- Left: copy -->
+      <div class="space-y-6">
+        <p class="text-xs font-semibold tracking-[0.2em] text-emerald-400 uppercase">IRL — Public Beta</p>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight">
+          Keep it real.<br>
+          <span class="text-emerald-400">Connect with friends in real life.</span>
+        </h1>
+        <p class="text-sm sm:text-base text-slate-300 max-w-xl">
+          IRL is the app for people who want less group chat chaos and more actual plans. Discover what's happening around you, coordinate with your circles, and keep the magic going after every gathering.
+        </p>
+
+        <dl class="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs sm:text-sm">
+          <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
+            <dt class="text-slate-400">For</dt>
+            <dd class="mt-1 font-medium text-slate-100">Friend groups, crews, community builders.</dd>
+          </div>
+          <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-3">
+            <dt class="text-slate-400">Core promise</dt>
+            <dd class="mt-1 font-medium text-slate-100">Less planning friction, more faces you love in the room.</dd>
+          </div>
+          <div class="rounded-xl border border-slate-800 bg-slate-900/60 p-3 sm:col-span-1">
+            <dt class="text-slate-400">Platform</dt>
+            <dd class="mt-1 font-medium text-slate-100">iOS — now in public beta via TestFlight.</dd>
+          </div>
+        </dl>
+
+        <div class="flex flex-col sm:flex-row gap-3 pt-2" id="cta">
+          <a href="https://testflight.apple.com/join/vG7BfAjr" target="_blank" rel="noopener"
+             class="inline-flex items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 hover:bg-emerald-400 transition">
+            ↓ Download on TestFlight
+          </a>
+          <a href="#features"
+             class="inline-flex items-center justify-center rounded-full border border-slate-700 bg-slate-900/60 px-5 py-2.5 text-sm font-medium text-slate-200 hover:border-slate-500 hover:text-white transition">
+            See how it works
+          </a>
+        </div>
+        <p class="text-[0.7rem] text-slate-500 max-w-md">No waitlist · Free · iOS · Public beta via Apple TestFlight</p>
+      </div>
+
+      <!-- Right: hero splash image -->
+      <div class="flex justify-center lg:justify-end">
+        <div class="relative w-[220px] sm:w-[260px]">
+          <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-purple-600/30 to-pink-500/20 blur-2xl scale-110"></div>
+          <img src="irl-intro.png"
+               alt="IRL app intro screen"
+               class="relative rounded-[2.5rem] shadow-2xl shadow-purple-900/40 w-full border border-slate-700/50">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ APP SCREENSHOTS ═══ -->
+  <section id="features" class="border-b border-slate-800/80 bg-slate-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18">
+      <div class="mb-10 text-center">
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">Built for the way you actually hang out</h2>
+        <p class="text-sm text-slate-400 mt-2 max-w-xl mx-auto">Three core views — Scenes, Circles, and your Profile — that work together to make real plans happen.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-6 lg:gap-10 items-start">
+
+        <!-- Screenshot 1: Scenes -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="relative w-[200px]">
+            <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-b from-purple-600/20 to-pink-500/10 blur-xl scale-110"></div>
+            <img src="Scenes-screenshot.png" alt="IRL Scenes tab" class="relative rounded-[2rem] shadow-xl w-full border border-slate-700/60">
+          </div>
+          <div class="text-center space-y-1">
+            <p class="text-sm font-semibold text-slate-100">Scenes</p>
+            <p class="text-xs text-slate-400">See what's happening — plans, hangouts, and moments from your world.</p>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- SOCIAL PROOF STRIP -->
-<div class="border-y section-divider py-6 px-6" style="background:rgba(255,255,255,0.02);">
-  <div class="max-w-6xl mx-auto flex flex-wrap justify-center gap-8 text-sm text-gray-500">
-    <span class="flex items-center gap-2"><span style="color:#4DF0B4;">✦</span> Built by Foursquare & Airbnb alumni</span>
-    <span class="flex items-center gap-2"><span style="color:#4DF0B4;">✦</span> AI-native social graph</span>
-    <span class="flex items-center gap-2"><span style="color:#4DF0B4;">✦</span> Privacy by default</span>
-    <span class="flex items-center gap-2"><span style="color:#4DF0B4;">✦</span> iOS public beta · Free</span>
-  </div>
-</div>
-
-<!-- APP SCREENSHOTS -->
-<section id="screenshots" class="py-24 px-6">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <div class="tag mb-4 inline-block">The App</div>
-      <h2 class="text-4xl font-black mb-4">Everything you need.<br/>Nothing you don't.</h2>
-      <p class="text-gray-400 max-w-xl mx-auto">A few tabs. Infinite real-life moments. IRL keeps your social life organized without the noise.</p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8 items-start">
-      <!-- Scenes Tab -->
-      <div class="text-center">
-        <div class="phone-shadow mb-6 mx-auto" style="width:220px;">
-          <div class="screenshot-frame">
-            <img src="Scenes-screenshot.png"
-                 alt="IRL Scenes Tab" style="width:100%; display:block;" />
+        <!-- Screenshot 2: Circles / People -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="relative w-[200px]">
+            <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-b from-blue-600/20 to-cyan-500/10 blur-xl scale-110"></div>
+            <img src="People-screenshot.png" alt="IRL Circles / People tab" class="relative rounded-[2rem] shadow-xl w-full border border-slate-700/60">
+          </div>
+          <div class="text-center space-y-1">
+            <p class="text-sm font-semibold text-slate-100">Circles</p>
+            <p class="text-xs text-slate-400">Your people, organized by how you actually know them. No follower counts, just real connections.</p>
           </div>
         </div>
-        <h3 class="font-bold text-lg mb-2" style="color:#4DF0B4;">Scenes</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Create hangouts — live right now, upcoming events, or recurring plans. See friends' Scenes and RSVP in one tap.</p>
-      </div>
 
-      <!-- People / Circles Tab -->
-      <div class="text-center">
-        <div class="phone-shadow mb-6 mx-auto" style="width:220px;">
-          <div class="screenshot-frame">
-            <img src="People-screenshot.png"
-                 alt="IRL People & Circles" style="width:100%; display:block;" />
+        <!-- Screenshot 3: Profile -->
+        <div class="flex flex-col items-center gap-4">
+          <div class="relative w-[200px]">
+            <div class="absolute inset-0 rounded-[2rem] bg-gradient-to-b from-emerald-600/20 to-teal-500/10 blur-xl scale-110"></div>
+            <img src="Profile-screenshot.png" alt="IRL Profile tab" class="relative rounded-[2rem] shadow-xl w-full border border-slate-700/60">
+          </div>
+          <div class="text-center space-y-1">
+            <p class="text-sm font-semibold text-slate-100">Profile</p>
+            <p class="text-xs text-slate-400">Your social world at a glance — who you've met, where you've been, what's next.</p>
           </div>
         </div>
-        <h3 class="font-bold text-lg mb-2" style="color:#4DF0B4;">Circles</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Group your connections into Circles — work friends, close friends, neighbors — and share Scenes with exactly the right people.</p>
-      </div>
 
-      <!-- Profile Tab -->
-      <div class="text-center">
-        <div class="phone-shadow mb-6 mx-auto" style="width:220px;">
-          <div class="screenshot-frame">
-            <img src="Profile-screenshot.png"
-                 alt="IRL Profile" style="width:100%; display:block;" />
-          </div>
-        </div>
-        <h3 class="font-bold text-lg mb-2" style="color:#4DF0B4;">Profile</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Set your interests and what you're "Down For" — meeting new people, dating, deepening friendships, or hosting events.</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FEATURES -->
-<section id="features" class="py-24 px-6" style="background: rgba(255,255,255,0.02);">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-16">
-      <div class="tag mb-4 inline-block">How It Works</div>
-      <h2 class="text-4xl font-black mb-4">Built for the way<br/>real friendships work.</h2>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6">
-      <div class="feature-card p-8">
-        <div class="text-3xl mb-4">🎬</div>
-        <h3 class="font-bold text-lg mb-3">Create a Scene</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Post what you're up to — right now, this weekend, or recurring. Add a place, time, and vibe. Your Scene goes live instantly.</p>
-      </div>
-      <div class="feature-card p-8">
-        <div class="text-3xl mb-4">🔒</div>
-        <h3 class="font-bold text-lg mb-3">Share with Circles</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Control exactly who sees your plans. Share with Work friends, Close friends, or everyone. No public blasts.</p>
-      </div>
-      <div class="feature-card p-8">
-        <div class="text-3xl mb-4">✅</div>
-        <h3 class="font-bold text-lg mb-3">RSVP in One Tap</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Going or can't go — that's it. See who's confirmed in real time. No group chats needed.</p>
-      </div>
-      <div class="feature-card p-8">
-        <div class="text-3xl mb-4">📍</div>
-        <h3 class="font-bold text-lg mb-3">Real Places</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Attach real venues to your Scenes. Tap a location to see what's nearby, what's happening there, and what your connections recommend.</p>
-      </div>
-      <div class="feature-card p-8">
-        <div class="text-3xl mb-4">⚡</div>
-        <h3 class="font-bold text-lg mb-3">Live Scenes</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Mark a Scene as Live and friends can see you're out right now with time remaining. Real spontaneity, finally.</p>
-      </div>
-      <div class="feature-card p-8">
-        <div class="text-3xl mb-4">🤝</div>
-        <h3 class="font-bold text-lg mb-3">Add via QR</h3>
-        <p class="text-gray-400 text-sm leading-relaxed">Add new connections in person with your QR code. No phone number required. Just scan and you're connected.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  <!-- ═══ EXPLORE — COMING SOON ═══ -->
+  <section class="border-b border-slate-800/80 bg-gradient-to-b from-slate-900 to-slate-950">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
 
-<!-- EXPLORE – COMING SOON -->
-<section id="explore" class="py-24 px-6">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-    <div>
-      <div class="coming-soon-badge mb-4 inline-block">Coming Soon</div>
-      <h2 class="text-4xl font-black mb-6">Explore the city.<br/><span style="color:#4DF0B4;">Find your scene.</span></h2>
-      <p class="text-gray-400 text-lg mb-6 leading-relaxed">
-        The Explore tab is coming — a local discovery layer built for people who actually go places. Find nearby IRL venues, see what your connections like, discover what's hot right now, and unlock promos from local spots.
-      </p>
-      <ul class="space-y-3 text-gray-300 text-sm">
-        <li class="flex items-start gap-3"><span style="color:#4DF0B4; margin-top:2px;">✦</span> <span><strong class="text-white">Nearby Venues</strong> — Cafes, bars, and spots within walking distance, with IRL ratings from real check-ins.</span></li>
-        <li class="flex items-start gap-3"><span style="color:#4DF0B4; margin-top:2px;">✦</span> <span><strong class="text-white">Your Connections Like</strong> — Social recommendations from people whose taste you actually trust.</span></li>
-        <li class="flex items-start gap-3"><span style="color:#4DF0B4; margin-top:2px;">✦</span> <span><strong class="text-white">Hot on IRL</strong> — What's trending right now in your city, updated in real time.</span></li>
-        <li class="flex items-start gap-3"><span style="color:#4DF0B4; margin-top:2px;">✦</span> <span><strong class="text-white">Promos</strong> — Exclusive offers from local venues for IRL members.</span></li>
-      </ul>
-    </div>
-    <div class="flex justify-center">
-      <div class="phone-shadow" style="width:260px;">
-        <div class="screenshot-frame">
-          <img src="Explore-screenshot-2026-03.png"
-               alt="IRL Explore Tab – Coming Soon" style="width:100%; display:block;" />
+      <!-- Left: screenshot -->
+      <div class="flex justify-center">
+        <div class="relative w-[220px] sm:w-[260px]">
+          <div class="absolute inset-0 rounded-[2.5rem] bg-gradient-to-br from-pink-600/30 to-orange-400/20 blur-2xl scale-110"></div>
+          <img src="Explore-screenshot-2026-03.png" alt="IRL Explore screen — coming soon"
+               class="relative rounded-[2.5rem] shadow-2xl shadow-pink-900/30 w-full border border-slate-700/50">
         </div>
       </div>
-    </div>
-  </div>
-</section>
 
-<!-- ROADMAP -->
-<section id="roadmap" class="py-24 px-6" style="background: rgba(124,58,237,0.04); border-top: 1px solid rgba(124,58,237,0.1);">
-  <div class="max-w-6xl mx-auto">
-    <div class="text-center mb-12">
-      <div style="background:rgba(124,58,237,0.15);color:#a78bfa;border:1px solid rgba(124,58,237,0.3);border-radius:50px;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:3px 12px; display:inline-block; margin-bottom:16px;">Live Roadmap</div>
-      <h2 class="text-4xl font-black mb-4">What we're building next.</h2>
-      <p class="text-gray-400 max-w-xl mx-auto mb-8">We build in public. Track every initiative on our live Linear board — updated in real time as the team ships.</p>
-      <a href="https://linear.app/irl-mvp/initiatives" target="_blank" rel="noopener"
-         class="inline-flex items-center gap-2 px-8 py-4 rounded-full font-bold text-sm transition-all"
-         style="background:rgba(124,58,237,0.2); border:1.5px solid rgba(124,58,237,0.5); color:#a78bfa;"
-         onmouseover="this.style.background='rgba(124,58,237,0.35)'" onmouseout="this.style.background='rgba(124,58,237,0.2)'">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
-        View Live Roadmap on Linear →
-      </a>
-    </div>
-    <div class="grid md:grid-cols-3 gap-6 mt-10">
-      <div class="roadmap-chip p-6">
-        <div class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#4DF0B4;">In Progress</div>
-        <ul class="space-y-2 text-sm text-gray-300">
-          <li class="flex gap-2 items-start"><span style="color:#4DF0B4;">▸</span> Explore tab with local venue discovery</li>
-          <li class="flex gap-2 items-start"><span style="color:#4DF0B4;">▸</span> Venue check-in ratings</li>
-          <li class="flex gap-2 items-start"><span style="color:#4DF0B4;">▸</span> Push notification improvements</li>
-        </ul>
-      </div>
-      <div class="roadmap-chip p-6">
-        <div class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#a78bfa;">Up Next</div>
-        <ul class="space-y-2 text-sm text-gray-300">
-          <li class="flex gap-2 items-start"><span style="color:#a78bfa;">▸</span> Venue promos & local partnerships</li>
-          <li class="flex gap-2 items-start"><span style="color:#a78bfa;">▸</span> AI-suggested Scenes based on interests</li>
-          <li class="flex gap-2 items-start"><span style="color:#a78bfa;">▸</span> Android version</li>
-        </ul>
-      </div>
-      <div class="roadmap-chip p-6">
-        <div class="text-xs font-bold uppercase tracking-widest mb-3" style="color:#EC4899;">Planned</div>
-        <ul class="space-y-2 text-sm text-gray-300">
-          <li class="flex gap-2 items-start"><span style="color:#EC4899;">▸</span> Memory layer: auto recaps after events</li>
-          <li class="flex gap-2 items-start"><span style="color:#EC4899;">▸</span> Social graph + "who overlaps" insights</li>
-          <li class="flex gap-2 items-start"><span style="color:#EC4899;">▸</span> City-level community discovery</li>
+      <!-- Right: copy -->
+      <div class="space-y-5">
+        <div class="inline-flex items-center rounded-full border border-pink-500/40 bg-pink-500/10 px-3 py-1 text-xs font-semibold text-pink-300 tracking-wide uppercase">
+          Coming Soon
+        </div>
+        <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">Explore — discover what's around you</h2>
+        <p class="text-sm text-slate-300 max-w-lg">
+          The Explore tab surfaces the best of what's happening nearby — powered by your network, not an algorithm trying to keep you scrolling.
+        </p>
+        <ul class="space-y-3 text-sm text-slate-300">
+          >
+            <span class="mt-0.5 h-5 w-5 flex-shrink-0 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 text-xs">→</span>
+            <div><span class="font-medium text-slate-100">Nearby</span> — See what's live and happening close to you right now.</div>
+          </li>
+          >
+            <span class="mt-0.5 h-5 w-5 flex-shrink-0 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 text-xs">→</span>
+            <div><span class="font-medium text-slate-100">Your Connections Like</span> — Trusted signal from people you actually know.</div>
+          </li>
+          >
+            <span class="mt-0.5 h-5 w-5 flex-shrink-0 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 text-xs">→</span>
+            <div><span class="font-medium text-slate-100">Hot on IRL</span> — What the broader IRL community is gravitating toward.</div>
+          </li>
+          >
+            <span class="mt-0.5 h-5 w-5 flex-shrink-0 rounded-full bg-pink-500/20 flex items-center justify-center text-pink-400 text-xs">→</span>
+            <div><span class="font-medium text-slate-100">Promos</span> — Curated partner spots and events worth knowing about.</div>
+          </li>
         </ul>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- TEAM -->
-<section id="team" class="py-24 px-6">
-  <div class="max-w-4xl mx-auto text-center">
-    <div class="tag mb-4 inline-block">The Team</div>
-    <h2 class="text-4xl font-black mb-4">Built by people who've<br/>done this before.</h2>
-    <p class="text-gray-400 max-w-2xl mx-auto mb-16">
-      IRL is being built by a small, experienced team with deep roots in consumer social, location, and AI-native product development.
-    </p>
-    <div class="grid md:grid-cols-2 gap-8">
-      <div class="feature-card p-8 text-left">
-        <div class="w-14 h-14 rounded-full mb-4 flex items-center justify-center text-xl font-black" style="background:linear-gradient(135deg,#ec4899,#7c3aed);">A</div>
-        <h3 class="font-bold text-lg mb-1">Angela</h3>
-        <p class="text-sm mb-3" style="color:#4DF0B4;">Co-founder & CEO</p>
-        <p class="text-gray-400 text-sm leading-relaxed">Product and design leader with experience building consumer social apps. Focused on growth, community, and the vision for IRL as the go-to platform for real-world connection.</p>
-      </div>
-      <div class="feature-card p-8 text-left">
-        <div class="w-14 h-14 rounded-full mb-4 flex items-center justify-center text-xl font-black" style="background:linear-gradient(135deg,#4DF0B4,#3b82f6);">J</div>
-        <h3 class="font-bold text-lg mb-1">James</h3>
-        <p class="text-sm mb-3" style="color:#4DF0B4;">Co-founder & CTO</p>
-        <p class="text-gray-400 text-sm leading-relaxed">Full-stack engineer and architect behind the IRL platform. Building the iOS app, backend infrastructure, and the AI social graph layer that powers discovery and recommendations.</p>
-      </div>
-    </div>
-    <p class="text-gray-600 text-sm mt-10">Inspired by lessons learned building products like Foursquare, Airbnb, and Partiful. Designed for 2026, not 2012.</p>
-  </div>
-</section>
-
-<!-- BETA CTA BANNER -->
-<section class="py-20 px-6" style="background: linear-gradient(135deg, rgba(77,240,180,0.08) 0%, rgba(124,58,237,0.12) 100%); border-top: 1px solid rgba(77,240,180,0.1); border-bottom: 1px solid rgba(77,240,180,0.1);">
-  <div class="max-w-3xl mx-auto text-center">
-    <div class="badge-live tag mb-6 inline-block">🟢 Public Beta Live</div>
-    <h2 class="text-4xl md:text-5xl font-black mb-6">Ready to keep it real?</h2>
-    <p class="text-gray-400 text-lg mb-8">Join the IRL public beta on iOS today. Free, no waitlist. We want your feedback.</p>
-    <a href="https://testflight.apple.com/join/vG7BfAjr" target="_blank" rel="noopener"
-       class="btn-primary px-10 py-5 text-lg inline-flex items-center gap-3">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      Download on TestFlight →
-    </a>
-    <p class="text-gray-600 text-sm mt-4">Apple TestFlight · iOS only · Requires iOS 16+</p>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="py-24 px-6">
-  <div class="max-w-2xl mx-auto">
-    <div class="text-center mb-12">
-      <div class="tag mb-4 inline-block">Get In Touch</div>
-      <h2 class="text-4xl font-black mb-4">Contact IRL with Friends</h2>
-      <p class="text-gray-400">For press, partnerships, privacy questions, or general inquiries — use the form below or email <a href="mailto:hello@irlwithfriends.com" style="color:#4DF0B4;">hello@irlwithfriends.com</a>.</p>
-    </div>
-    <form action="mailto:hello@irlwithfriends.com" method="GET" enctype="text/plain" class="space-y-4">
-      <div class="grid md:grid-cols-2 gap-4">
-        <div>
-          <label class="block text-sm text-gray-400 mb-2">Name</label>
-          <input type="text" name="name" required placeholder="Your name" class="w-full px-4 py-3 text-sm" />
-        </div>
-        <div>
-          <label class="block text-sm text-gray-400 mb-2">Email address</label>
-          <input type="email" name="email" required placeholder="you@example.com" class="w-full px-4 py-3 text-sm" />
-        </div>
-      </div>
-      <div>
-        <label class="block text-sm text-gray-400 mb-2">Subject</label>
-        <input type="text" name="subject" required placeholder="What's this about?" class="w-full px-4 py-3 text-sm" />
-      </div>
-      <div>
-        <label class="block text-sm text-gray-400 mb-2">Message</label>
-        <textarea name="body" required rows="5" placeholder="Tell us more…" class="w-full px-4 py-3 text-sm resize-none"></textarea>
-      </div>
-      <button type="submit" class="btn-primary w-full py-4 text-base font-bold">Send Message</button>
-      <p class="text-gray-600 text-xs text-center">By submitting this form, you agree to our <a href="/privacy" style="color:#4DF0B4;">Privacy Policy</a>.</p>
-    </form>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="border-t section-divider py-10 px-6">
-  <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-    <div class="flex items-center gap-3">
-      <span class="text-2xl font-black" style="font-style:italic; color:#4DF0B4;">irl</span>
-      <span class="text-gray-600 text-sm">Keep it real · 2026</span>
-    </div>
-    <div class="flex items-center gap-6 text-sm text-gray-500">
-      <a href="https://testflight.apple.com/join/vG7BfAjr" target="_blank" rel="noopener" style="color:#4DF0B4;" class="hover:opacity-80 transition-opacity font-semibold">Join Beta</a>
-      <a href="https://linear.app/irl-mvp/initiatives" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors">Roadmap</a>
-      <a href="#contact" class="hover:text-gray-300 transition-colors">Contact</a>
-      <a href="/privacy" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
-      <a href="/tos" class="hover:text-gray-300 transition-colors">Terms of Service</a>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-</script>
-
-</body>
-</html>
+  <!-- ═══ PRODUCT PILLARS ═══ -->
+  <section id="features-detail"
