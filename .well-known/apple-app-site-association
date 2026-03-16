@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "2YQYEN3YK9.com.irlapp.irlmain",
+        "paths": ["/connect/*"]
+      }
+    ]
+  }
+}
