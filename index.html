@@ -328,6 +328,8 @@
 <script>
   (function () {
     const SMS_OPTIN_ENDPOINT = "https://rkxsopbsiaftjvjzvmqa.supabase.co/functions/v1/sms-optin-web";
+    // Public Supabase anon key — safe to expose client-side, gated by RLS/edge function logic server-side.
+    const SUPABASE_ANON_KEY = "sb_publishable_zw_JEzH4LkRT_tcelg3qNg_WT_9PIx7";
     const form = document.getElementById("sms-optin-form");
     const statusEl = document.getElementById("sms-optin-status");
     const submitBtn = document.getElementById("sms-submit-btn");
@@ -359,7 +361,7 @@
       try {
         const res = await fetch(SMS_OPTIN_ENDPOINT, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY },
           body: JSON.stringify({ phone, consent, company }),
         });
         const data = await res.json();
