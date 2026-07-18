@@ -340,6 +340,9 @@
       const phone = document.getElementById("sms-phone").value.trim();
       const consent = document.getElementById("sms-consent").checked;
       const company = document.getElementById("sms-company").value;
+      // Tags re-opt-ins reached via personal outreach (e.g. ?src=beta-outreach)
+      // so the consent record is distinguishable from organic website signups.
+      const source = new URLSearchParams(window.location.search).get("src");
 
       statusEl.textContent = "";
       statusEl.className = "text-xs text-center";
@@ -362,7 +365,7 @@
         const res = await fetch(SMS_OPTIN_ENDPOINT, {
           method: "POST",
           headers: { "Content-Type": "application/json", "apikey": SUPABASE_ANON_KEY },
-          body: JSON.stringify({ phone, consent, company }),
+          body: JSON.stringify({ phone, consent, company, source }),
         });
         const data = await res.json();
 
