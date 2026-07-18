@@ -279,6 +279,110 @@
   </div>
 </section>
 
+<!-- ═══ SMS UPDATES OPT-IN ═══ -->
+<section id="sms-updates" class="border-b border-slate-800/80 bg-slate-950">
+  <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-18">
+    <div class="text-center mb-8">
+      <p class="text-xs font-semibold tracking-[0.2em] text-emerald-400 uppercase mb-3">Stay in the loop</p>
+      <h2 class="text-xl sm:text-2xl font-semibold tracking-tight">Get IRL updates by text</h2>
+      <p class="text-sm text-slate-400 mt-2 max-w-md mx-auto">
+        Drop your number for occasional texts about new features, beta invites, and app news. Up to 4 msgs/month — no spam, cancel anytime.
+      </p>
+    </div>
+
+    <form id="sms-optin-form" class="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 space-y-4" novalidate>
+      <div>
+        <label for="sms-phone" class="block text-xs text-slate-400 mb-2">Phone number</label>
+        <input type="tel" id="sms-phone" name="phone" required autocomplete="tel" placeholder="(555) 123-4567"
+               class="w-full rounded-lg border border-slate-700 bg-slate-950/60 px-4 py-2.5 text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/60">
+      </div>
+
+      <!-- Honeypot — hidden from real users, bots tend to fill every field -->
+      <div class="hidden" aria-hidden="true">
+        <label for="sms-company">Company</label>
+        <input type="text" id="sms-company" name="company" tabindex="-1" autocomplete="off">
+      </div>
+
+      <label class="flex items-start gap-3 text-xs text-slate-400 leading-relaxed">
+        <input type="checkbox" id="sms-consent" name="consent" required
+               class="mt-0.5 h-4 w-4 rounded border-slate-600 bg-slate-950 text-emerald-500 focus:ring-emerald-500/60 focus:ring-offset-0">
+        <span>
+          By checking this box, I agree to receive recurring automated marketing text messages from IRL at the phone number provided.
+          Consent is not a condition of any purchase. Msg frequency varies, up to 4 msgs/month. Msg &amp; data rates may apply.
+          Reply <strong>HELP</strong> for help, <strong>STOP</strong> to cancel.
+          View <a href="/tos#sms" class="underline hover:text-slate-200">Terms</a> and
+          <a href="/privacy#sms" class="underline hover:text-slate-200">Privacy Policy</a>.
+        </span>
+      </label>
+
+      <button type="submit" id="sms-submit-btn"
+              class="inline-flex w-full items-center justify-center rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 hover:bg-emerald-400 transition disabled:opacity-50 disabled:cursor-not-allowed">
+        Sign up for texts
+      </button>
+
+      <p id="sms-optin-status" class="text-xs text-center" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  (function () {
+    const SMS_OPTIN_ENDPOINT = "https://rkxsopbsiaftjvjzvmqa.supabase.co/functions/v1/sms-optin-web";
+    const form = document.getElementById("sms-optin-form");
+    const statusEl = document.getElementById("sms-optin-status");
+    const submitBtn = document.getElementById("sms-submit-btn");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const phone = document.getElementById("sms-phone").value.trim();
+      const consent = document.getElementById("sms-consent").checked;
+      const company = document.getElementById("sms-company").value;
+
+      statusEl.textContent = "";
+      statusEl.className = "text-xs text-center";
+
+      if (!phone) {
+        statusEl.textContent = "Enter a phone number.";
+        statusEl.classList.add("text-rose-400");
+        return;
+      }
+      if (!consent) {
+        statusEl.textContent = "Please check the box to consent to text updates.";
+        statusEl.classList.add("text-rose-400");
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Signing up…";
+
+      try {
+        const res = await fetch(SMS_OPTIN_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ phone, consent, company }),
+        });
+        const data = await res.json();
+
+        if (res.ok && data.success) {
+          statusEl.textContent = "You're all set! Check your phone for a welcome text.";
+          statusEl.classList.add("text-emerald-400");
+          form.reset();
+        } else {
+          statusEl.textContent = data.error || "Something went wrong. Please try again.";
+          statusEl.classList.add("text-rose-400");
+        }
+      } catch (err) {
+        statusEl.textContent = "Network error — please try again.";
+        statusEl.classList.add("text-rose-400");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Sign up for texts";
+      }
+    });
+  })();
+</script>
+
 <!-- CONTACT -->
 <section id="contact" class="py-24 px-6">
   <div class="max-w-2xl mx-auto">
@@ -322,6 +426,7 @@
     <div class="flex items-center gap-6 text-sm text-gray-500">
       <a href="https://testflight.apple.com/join/vG7BfAjr" target="_blank" rel="noopener" style="color:#4DF0B4;" class="hover:opacity-80 transition-opacity font-semibold">Join Beta</a>
       <a href="https://linear.app/irl-mvp/initiatives" target="_blank" rel="noopener" class="hover:text-gray-300 transition-colors">Roadmap</a>
+      <a href="#sms-updates" class="hover:text-gray-300 transition-colors">Text Updates</a>
       <a href="#contact" class="hover:text-gray-300 transition-colors">Contact</a>
       <a href="/privacy" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
       <a href="/tos" class="hover:text-gray-300 transition-colors">Terms of Service</a>
